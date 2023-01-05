@@ -1,0 +1,19 @@
+{
+  "name": "solid-start-server",
+  "version": "1.0.0",
+  "description": "Modified version of \"solid-start-node\" that allows access to the server",
+  "main": "index.mjs",
+  "scripts": {
+    "save": "npm publish & push"
+  },
+  "keywords": [],
+  "author": "AFatNiBBa",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/AFatNiBBa/solid-start-server"
+  },
+  "license": "ISC",
+  "dependencies": {
+    "solid-start-node": "^0.2.11"
+  }
+}
