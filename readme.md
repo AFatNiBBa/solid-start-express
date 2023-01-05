@@ -1,7 +1,21 @@
 
 # solid-start-server
 Modified version of `solid-start-node` that allows access to the server. <br />
-To use, just edit your `entry-server.tsx` file from this:
+To use, pass the adapter to the solid plugin in `vite.config.ts`, like this:
+```js
+import adapter from "solid-start-server";
+import solid from "solid-start/vite";
+import { defineConfig } from "vite";
+
+export default defineConfig({
+  plugins: [
+    solid({
+      adapter: adapter() // ← This
+    })
+  ],
+});
+```
+And edit your `entry-server.tsx` file from this:
 ```js
 import {
   createHandler,
