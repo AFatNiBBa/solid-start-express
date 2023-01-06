@@ -1,6 +1,6 @@
 
 # solid-start-express
-Modified version of `solid-start-express` that allows access to the server. <br />
+Modified version of `solid-start-node` that allows access to the server. <br />
 To use, pass the adapter to the solid plugin in `vite.config.ts`, like this:
 ```js
 import adapter from "solid-start-express";

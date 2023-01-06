@@ -1,6 +1,6 @@
 
 import "solid-start/node/globals.js";
-import handler from "solid-start-express/handler.js";
+import handler from "./handler.js";
 import manifest from "../../dist/public/route-manifest.json";
 import { createServer } from "solid-start-express/server.js";
 import { dirname, join } from "path";
