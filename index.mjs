@@ -1,10 +1,9 @@
 
-import common from "@rollup/plugin-commonjs";
 import json from "@rollup/plugin-json";
+import common from "@rollup/plugin-commonjs";
 import nodeResolve from "@rollup/plugin-node-resolve";
-import solidStartNode from "solid-start-node";
+import { fileURLToPath, pathToFileURL } from "url";
 import { join, dirname } from "path";
-import { fileURLToPath } from "url";
 import { copyFileSync } from "fs";
 import { rollup } from "rollup";
 
@@ -12,10 +11,14 @@ const __dirname = dirname(fileURLToPath(import.meta.url));
 
 export default function () {
   return {
-    // Extends the standard implementation
-    ...solidStartNode(),
+    name: "express",
 
-    // Overrides the "build()" method
+    start(config, { port }) {
+      process.env.PORT = port;
+      import(pathToFileURL(join(config.root, "dist", "server.js")).toString());
+      return `http://localhost:${process.env.PORT}`;
+    },
+
     async build(config, builder) {
       const ssrExternal = config?.ssr?.external || [];
       const dist = join(config.root, "dist"); 
@@ -27,6 +30,7 @@ export default function () {
       else await builder.client(pub);
       await builder.server(ser);
 
+      // Gets the handler (Server entry point) and the server starter
       copyFileSync(join(ser, "entry-server.js"), join(ser, "handler.js"));
       copyFileSync(join(__dirname, "entry.js"), join(ser, "server.js")); // ← What I changed
 

@@ -1,9 +1,9 @@
 
-# solid-start-server
-Modified version of `solid-start-node` that allows access to the server. <br />
+# solid-start-express
+Modified version of `solid-start-express` that allows access to the server. <br />
 To use, pass the adapter to the solid plugin in `vite.config.ts`, like this:
 ```js
-import adapter from "solid-start-server";
+import adapter from "solid-start-express";
 import solid from "solid-start/vite";
 import { defineConfig } from "vite";
 
@@ -27,7 +27,7 @@ export default createHandler(renderAsync((event) => <StartServer event={event} /
 ```
 To this:
 ```js
-import { Polka } from "polka";
+import type { Observer } from "solid-start-express";
 import {
   createHandler,
   renderAsync,
@@ -36,8 +36,8 @@ import {
 
 const handler = createHandler(renderAsync((event) => <StartServer event={event} />));
 export default Object.assign(handler, {
-  onServer(server: Polka) {
+  beforePublic(server) {
     // Your code...
   }
-});
+} satisfies Observer);
 ```

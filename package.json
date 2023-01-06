@@ -1,6 +1,6 @@
 {
-  "name": "solid-start-server",
-  "version": "1.2.0",
+  "name": "solid-start-express",
+  "version": "0.2.11",
   "description": "Modified version of \"solid-start-node\" that allows access to the server",
   "main": "index.mjs",
   "scripts": {
@@ -10,10 +10,13 @@
   "author": "AFatNiBBa",
   "repository": {
     "type": "git",
-    "url": "https://github.com/AFatNiBBa/solid-start-server"
+    "url": "https://github.com/AFatNiBBa/solid-start-express"
   },
   "license": "ISC",
   "dependencies": {
-    "solid-start-node": "^0.2.11"
+    "solid-start": "^0.2.0",
+    "express": "^5.0.0-alpha.6",
+    "compression": "^1.7.4",
+    "sirv": "^2.0.2"
   }
 }

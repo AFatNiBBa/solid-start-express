@@ -1,28 +1,22 @@
 
-import { dirname, join } from "path";
-import { createServer } from "solid-start-node/server.js";
 import "solid-start/node/globals.js";
-import { fileURLToPath } from "url";
+import handler from "solid-start-express/handler.js.js";
 import manifest from "../../dist/public/route-manifest.json";
-import handler from "./handler.js";
+import { createServer } from "solid-start-express/server.js";
+import { dirname, join } from "path";
+import { fileURLToPath } from "url";
 
 const { PORT = 3000 } = process.env;
 
 const __dirname = dirname(fileURLToPath(import.meta.url));
-const paths = { assets: join(__dirname, "public") };
 
-const server = createServer({
-  paths,
+const server = createServer(
   handler,
-  env: { manifest },
-});
+  join(__dirname, "public"),
+  { manifest }
+);
 
-handler.onServer(server);
-
-server.listen(PORT, err => {
-  if (err) {
-    console.log("error", err);
-  } else {
-    console.log(`Listening on port ${PORT}`);
-  }
-});
+server.listen(PORT, e => e
+  ? console.error(e)
+  : console.log(`Listening on port ${PORT}`)
+);
