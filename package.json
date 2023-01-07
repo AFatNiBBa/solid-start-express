@@ -1,6 +1,6 @@
 {
   "name": "solid-start-express",
-  "version": "0.2.17",
+  "version": "0.2.18",
   "description": "Modified version of \"solid-start-node\" that allows access to the server",
   "main": "index.mjs",
   "scripts": {

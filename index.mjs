@@ -14,8 +14,8 @@ export default function () {
     name: "express",
 
     start(config, { port }) {
-      process.env.PORT = port;
-      import(pathToFileURL(join(config.root, "dist", "server.js")).toString());
+      process.env.PORT = config.server.port ?? port;
+      import(pathToFileURL(join(config.root, "dist", "server.js")));
       return `http://localhost:${process.env.PORT}`;
     },
 
