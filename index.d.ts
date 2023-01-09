@@ -8,7 +8,8 @@ export default function (): Adapter;
 export type Handler = Observer & ((event: FetchEvent) => Promise<Response>);
 
 export type Observer = {
-  beforePublic?(server: Express): void,
-  beforeRoutes?(server: Express): void,
-  beforeListen?(server: Express): void
+  beforePublic?(app: Express): void,
+  beforeRoutes?(app: Express): void,
+  beforeListen?(app: Express): void,
+  afterListen?(app: Express, server: ReturnType<typeof app.listen>): void
 };

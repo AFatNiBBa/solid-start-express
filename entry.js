@@ -10,13 +10,15 @@ const { PORT = 3000 } = process.env;
 
 const __dirname = dirname(fileURLToPath(import.meta.url));
 
-const server = createServer(
+const app = createServer(
   handler,
   join(__dirname, "public"),
   { manifest }
 );
 
-server.listen(PORT, e => e
+const server = app.listen(PORT, e => e
   ? console.error(e)
   : console.log(`Listening on port ${PORT}`)
 );
+
+handler?.afterListen(app, server);
