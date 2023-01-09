@@ -21,4 +21,4 @@ const server = app.listen(PORT, e => e
   : console.log(`Listening on port ${PORT}`)
 );
 
-handler?.afterListen(app, server);
+handler.afterListen?.(app, server);
